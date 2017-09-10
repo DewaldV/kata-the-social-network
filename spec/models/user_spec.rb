@@ -32,6 +32,20 @@ RSpec.describe User, "#post" do
     user.post("Hi!")
 
     expect(user.posts.size).to eq 1
-    user.posts.each { |post|  expect(post.content).to eq "Hi!" }
+    user.posts.each { |post| expect(post.content).to eq "Hi!" }
+  end
+end
+
+RSpec.describe User, '#wall' do
+  it "returns the wall for the user" do
+    user = User.new "UserWall"
+    user.post("On the wall it goes!")
+
+    expect(user.wall.size).to eq 1
+    user.wall.each do |item|
+      puts item
+      expect(item['user'].name).to eq "UserWall"
+      expect(item['post'].content).to eq "On the wall it goes!"
+    end
   end
 end

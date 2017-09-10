@@ -14,6 +14,12 @@ class User
     @posts << Post.new(content)
   end
 
+  def wall
+    @posts.map do |post|
+      { 'user': self, 'post': post }
+    end
+  end
+
   def User.get(name)
     if not @@users.key? name
       @@users[name] = User.new name
