@@ -3,7 +3,7 @@
 class ReadPosts
   def match(line)
     line.match(/^(?<user>[A-Za-z]+)$/) do |m|
-      username = m['user']
+      username = m[:user]
 
       user = User.get(username)
       user.posts.map do |post|

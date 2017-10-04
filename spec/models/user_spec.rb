@@ -43,9 +43,8 @@ RSpec.describe User, '#wall' do
 
     expect(user.wall.size).to eq 1
     user.wall.each do |item|
-      puts item
-      expect(item['user'].name).to eq "UserWall"
-      expect(item['post'].content).to eq "On the wall it goes!"
+      expect(item[:user].name).to eq "UserWall"
+      expect(item[:post].content).to eq "On the wall it goes!"
     end
   end
 end
